@@ -221,6 +221,20 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.yigitcancaliskan.eventbus": {
+      "version": "https://github.com/YigitcanCaliskan/unity-eventbus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8f8d414e7527277ac23f77ecad53cf13db3695c3"
+    },
+    "com.yigitcancaliskan.servicelocator": {
+      "version": "https://github.com/YigitcanCaliskan/unity-service-locator.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "16f33f54e1b7f052d9fb1db670ad12dbfff505da"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
