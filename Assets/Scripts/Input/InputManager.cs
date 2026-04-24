@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using YigitcanCaliskan;
+using YigitcanCaliskan.ServiceLocator;
 
 [DefaultExecutionOrder(-1)]
-public class InputManager : MonoBehaviour
+public class InputManager : MonoBehaviour,IBootstrapService,IInputService
 {
     public static InputManager Instance;
 
@@ -13,8 +15,10 @@ public class InputManager : MonoBehaviour
     public bool JumpPressed { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool JumpReleased { get; private set; }
-    public bool SprintHeld { get; private set; }
-    public bool CrouchHeld { get; private set; }
+    public bool SprintHeld      { get; private set; }
+    public bool CrouchHeld      { get; private set; }
+    public bool IsGamepadActive => _playerInput != null &&
+                                   _playerInput.currentControlScheme == "Gamepad";
 
     // Gameplay - events
     public event Action OnInteract;
@@ -57,6 +61,8 @@ public class InputManager : MonoBehaviour
         Instance = this;
         _playerInput = GetComponent<PlayerInput>();
         SetupInputActions();
+        
+     
     }
 
     private void OnEnable() => RegisterEventInputs();
@@ -87,7 +93,7 @@ public class InputManager : MonoBehaviour
 
     private void UpdatePollingInputs()
     {
-        // Gameplay
+        if (_moveAction == null) return;
         Move         = _moveAction.ReadValue<Vector2>();
         Look         = _lookAction.ReadValue<Vector2>();
         JumpPressed  = _jumpAction.WasPressedThisFrame();
@@ -155,5 +161,10 @@ public class InputManager : MonoBehaviour
         _playerInput.SwitchCurrentActionMap("UI");
         SetupInputActions();
         RegisterEventInputs();
+    }
+
+    public void Register()
+    {
+       ServiceLocator.Register<IInputService>(this);
     }
 }

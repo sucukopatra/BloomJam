@@ -61,6 +61,7 @@ public class InputDeviceDetector : MonoBehaviour
 
     private InputDevice ResolveDevice()
     {
+        if (_playerInput == null) return InputDevice.KeyboardMouse;
         foreach (var device in _playerInput.devices)
         {
             if (device is Gamepad)
