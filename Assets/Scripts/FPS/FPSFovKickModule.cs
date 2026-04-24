@@ -5,7 +5,7 @@ public class FPSFovKickModule : FPSModule
 {
     public override int ExecutionOrder => 8;
 
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private float baseFov   = 60f;
     [SerializeField] private float sprintFov = 70f;
     [SerializeField] private float kickSpeed = 8f;
@@ -13,18 +13,18 @@ public class FPSFovKickModule : FPSModule
     public override void Initialize(FPSController controller)
     {
         base.Initialize(controller);
-        if (virtualCamera != null)
-            virtualCamera.m_Lens.FieldOfView = baseFov;
+        if (cinemachineCamera != null)
+            cinemachineCamera.Lens.FieldOfView = baseFov;
     }
 
     public override void LateTick()
     {
-        if (virtualCamera == null) return;
+        if (cinemachineCamera == null) return;
 
         float targetFov = Controller.IsSprinting ? sprintFov : baseFov;
 
-        virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(
-            virtualCamera.m_Lens.FieldOfView,
+        cinemachineCamera.Lens.FieldOfView = Mathf.Lerp(
+            cinemachineCamera.Lens.FieldOfView,
             targetFov,
             kickSpeed * Time.deltaTime
         );
