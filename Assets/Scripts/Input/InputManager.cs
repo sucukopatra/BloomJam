@@ -120,6 +120,7 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
 
     private void UnregisterEventInputs()
     {
+        if (_interactAction == null) return;
         _interactAction.performed     -= HandleInteract;
         _attackAction.performed       -= HandleAttack;
         _dashAction.performed         -= HandleDash;
