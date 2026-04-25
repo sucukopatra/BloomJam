@@ -89,15 +89,17 @@ namespace BloomJam.Weapons
 
         private void Update()
         {
-            if (_activeBehaviour == null || IsBusy) return;
+            if (_activeBehaviour == null) return;
 
             // Edge-detect attack release for full-auto strategies.
-            // OnAttack covers press; held/release we read from the polling property.
-            if (_input != null && !_input.AttackHeld && _wasAttackHeldLastFrame)
+            // Run this even while IsBusy so a release during reload/switch is not lost —
+            // otherwise full-auto resumes firing the moment the busy window ends.
+            bool heldNow = _input != null && _input.AttackHeld;
+            if (!heldNow && _wasAttackHeldLastFrame)
                 _activeBehaviour.OnAttackReleased();
+            _wasAttackHeldLastFrame = heldNow;
 
-            _wasAttackHeldLastFrame = _input != null && _input.AttackHeld;
-
+            if (IsBusy) return;
             _activeBehaviour.Tick(Time.deltaTime);
         }
 

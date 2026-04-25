@@ -2,12 +2,6 @@ using UnityEngine;
 
 namespace BloomJam.Weapons
 {
-    public enum WeaponFireMode
-    {
-        SemiAuto,
-        FullAuto,
-    }
-
     public enum WeaponBehaviourKind
     {
         Pistol,
@@ -29,9 +23,6 @@ namespace BloomJam.Weapons
         public Color TintColor = Color.white;
 
         [Header("Firing")]
-        [Tooltip("Semi-auto = one shot per click. FullAuto = continuous while held at FireRate.")]
-        public WeaponFireMode FireMode = WeaponFireMode.SemiAuto;
-
         [Tooltip("Rounds per second. For semi-auto this caps click spam.")]
         [Min(0.01f)] public float FireRate = 4f;
 

@@ -5,7 +5,7 @@ using YigitcanCaliskan.EventBus;
 namespace BloomJam.Weapons
 {
     /// <summary>
-    /// Subscribes to WeaponFiredEvent, raycasts into the world, and delivers a HitInfo
+    /// Subscribes to WeaponPelletFiredEvent, raycasts into the world, and delivers a HitInfo
     /// to the first IDamageable on the hit collider's GameObject or any parent.
     ///
     /// This is the entire seam between the weapon system and the enemy/damage system.
@@ -22,10 +22,10 @@ namespace BloomJam.Weapons
         [SerializeField, Tooltip("Draw debug rays in the Scene/Game view (with Gizmos on).")]
         private bool _drawDebug = false;
 
-        private void OnEnable()  => EventBus.Subscribe<WeaponFiredEvent>(OnFired);
-        private void OnDisable() => EventBus.Unsubscribe<WeaponFiredEvent>(OnFired);
+        private void OnEnable()  => EventBus.Subscribe<WeaponPelletFiredEvent>(OnFired);
+        private void OnDisable() => EventBus.Unsubscribe<WeaponPelletFiredEvent>(OnFired);
 
-        private void OnFired(WeaponFiredEvent e)
+        private void OnFired(WeaponPelletFiredEvent e)
         {
             if (e.Weapon == null) return;
 

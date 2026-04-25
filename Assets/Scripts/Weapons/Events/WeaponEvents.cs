@@ -29,6 +29,10 @@ namespace BloomJam.Weapons
         }
     }
 
+    /// <summary>
+    /// Published once per trigger pull (regardless of pellet count). Drives view-layer
+    /// reactions: VFX, audio, camera shake, screen flash, hand-sprite advance, animator.
+    /// </summary>
     public readonly struct WeaponFiredEvent : IEvent
     {
         public readonly WeaponData Weapon;
@@ -42,6 +46,24 @@ namespace BloomJam.Weapons
             Origin = origin;
             Direction = direction;
             ShotsLeftInMag = shotsLeftInMag;
+        }
+    }
+
+    /// <summary>
+    /// Published once per pellet. Consumed by hit-detection (WeaponHitscan) only.
+    /// For single-pellet weapons there is exactly one of these per WeaponFiredEvent.
+    /// </summary>
+    public readonly struct WeaponPelletFiredEvent : IEvent
+    {
+        public readonly WeaponData Weapon;
+        public readonly Vector3 Origin;
+        public readonly Vector3 Direction;
+
+        public WeaponPelletFiredEvent(WeaponData weapon, Vector3 origin, Vector3 direction)
+        {
+            Weapon = weapon;
+            Origin = origin;
+            Direction = direction;
         }
     }
 

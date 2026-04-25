@@ -15,7 +15,6 @@ MonoBehaviour:
   DisplayName: Red
   BehaviourKind: 0
   TintColor: {r: 1, g: 1, b: 1, a: 1}
-  FireMode: 0
   FireRate: 4
   Damage: 15
   Range: 100

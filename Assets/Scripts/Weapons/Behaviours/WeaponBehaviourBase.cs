@@ -66,16 +66,31 @@ namespace BloomJam.Weapons
 
             CooldownRemaining = 1f / Mathf.Max(0.01f, Ctx.Data.FireRate);
 
-            Vector3 origin = Ctx.FireOrigin != null ? Ctx.FireOrigin.position : Vector3.zero;
+            // Origin priority: muzzle > aim source > abort. Vector3.zero would shoot
+            // from world origin, which silently breaks hit detection.
+            Vector3 origin;
+            if (Ctx.FireOrigin != null)      origin = Ctx.FireOrigin.position;
+            else if (Ctx.AimSource != null)  origin = Ctx.AimSource.position;
+            else
+            {
+                Debug.LogError($"[{nameof(WeaponBehaviourBase)}] No FireOrigin or AimSource on {Ctx.Data?.DisplayName}; aborting shot.");
+                return false;
+            }
+
             Vector3 baseDir = Ctx.AimSource != null ? Ctx.AimSource.forward
                             : Ctx.FireOrigin != null ? Ctx.FireOrigin.forward
                             : Vector3.forward;
 
             int pellets = Mathf.Max(1, Ctx.Data.PelletsPerShot);
+
+            // Per-shot event drives view layer (VFX/audio/anim/screen flash) — fires once.
+            EventBus.Publish(new WeaponFiredEvent(Ctx.Data, origin, baseDir, Ctx.CurrentAmmo));
+
+            // Per-pellet event drives hit detection — fires N times with independent spread.
             for (int i = 0; i < pellets; i++)
             {
                 Vector3 dir = ApplySpread(baseDir, Ctx.Data.SpreadDegrees);
-                EventBus.Publish(new WeaponFiredEvent(Ctx.Data, origin, dir, Ctx.CurrentAmmo));
+                EventBus.Publish(new WeaponPelletFiredEvent(Ctx.Data, origin, dir));
             }
 
             if (Ctx.CurrentAmmo == 0 && Ctx.Data.AutoReloadOnEmpty)
