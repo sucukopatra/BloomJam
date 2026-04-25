@@ -9,13 +9,24 @@ namespace BloomJam.Combat
         public readonly Collider Collider;
         public readonly float Distance;
         public readonly float BaseDamage;
+        public readonly bool IsHeadshot;
 
         public HitInfo(WeaponData sourceWeapon, Collider collider, float distance, float baseDamage)
         {
             SourceWeapon = sourceWeapon;
-            Collider = collider;
-            Distance = distance;
-            BaseDamage = baseDamage;
+            Collider     = collider;
+            Distance     = distance;
+            BaseDamage   = baseDamage;
+            IsHeadshot   = false;
+        }
+
+        public HitInfo(WeaponData sourceWeapon, Collider collider, float distance, float baseDamage, bool isHeadshot)
+        {
+            SourceWeapon = sourceWeapon;
+            Collider     = collider;
+            Distance     = distance;
+            BaseDamage   = baseDamage;
+            IsHeadshot   = isHeadshot;
         }
     }
 }

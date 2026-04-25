@@ -1,14 +1,10 @@
-using System;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
 using BloomJam.Combat;
 using BloomJam.Weapons;
-using YigitcanCaliskan;
-using YigitcanCaliskan.ServiceLocator;
 
 namespace BloomJam.Enemies
 {
-
     public class EnemyMainScript : MonoBehaviour, IDamageable
     {
         [Header("Identity")]
@@ -20,13 +16,14 @@ namespace BloomJam.Enemies
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private float maxshotgundistance = 100f;
 
+        [Header("Refs")]
+        [SerializeField] private EnemyAnimator enemyAnimator;
+        [SerializeField] private EnemyAI enemyAI;
+
         public float CurrentHealth { get; private set; }
         public EnemyType Type => type;
 
         private bool _isDead;
-        
-        
-        
 
         private void Awake()
         {
@@ -34,43 +31,38 @@ namespace BloomJam.Enemies
         }
 
         public void TakeDamage(in HitInfo hitinfo)
-        { 
+        {
             if (_isDead) return;
+            if (hitinfo.SourceWeapon.BehaviourKind != weakTo) return;
 
-            if ( hitinfo.SourceWeapon.BehaviourKind != weakTo )
-            {
-                return;
-            }
-
-            var new_damage=0f;
-            
+            var newDamage = 0f;
             if (maxshotgundistance > hitinfo.Distance)
             {
-                new_damage  = hitinfo.SourceWeapon.BehaviourKind == WeaponBehaviourKind.Shotgun
+                newDamage = hitinfo.SourceWeapon.BehaviourKind == WeaponBehaviourKind.Shotgun
                     ? hitinfo.BaseDamage * (1 - (hitinfo.Distance / maxshotgundistance))
                     : hitinfo.BaseDamage;
             }
-           
-           
 
-            CurrentHealth -= new_damage;
-            
+            CurrentHealth -= (int)newDamage;
+
             if (CurrentHealth <= 0f)
             {
-                Die();
+                Die(hitinfo.IsHeadshot);
             }
-        }
-
-        private void Update()
-        {
-            if (ServiceLocator.Get<IInputService>().JumpPressed)
+            else
             {
-                Die();
+                enemyAnimator.PlayHurt();
             }
         }
 
-        private void Die()
+        private void Die(bool isHeadshot)
         {
+            _isDead = true;
+            enemyAI.OnDeath();
+
+            if (isHeadshot) enemyAnimator.PlayDieHead();
+            else enemyAnimator.PlayDieNormal();
+
             EventBus.Publish(new EnemyDiedEvent
             {
                 Type = type,
@@ -78,7 +70,11 @@ namespace BloomJam.Enemies
                 Position = transform.position
             });
 
-            Destroy(gameObject);
+            // Animasyonun bitmesi için biraz bekle, sonra destroy
+            Destroy(gameObject, 1.5f);
         }
+
+        // Test için bıraktığın jump-to-die kısmını sildim,
+        // production'a geçmeden temiz olsun
     }
 }
