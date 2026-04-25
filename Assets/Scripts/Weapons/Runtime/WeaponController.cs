@@ -79,6 +79,10 @@ namespace BloomJam.Weapons
 
         private void Start()
         {
+            // Self-register so anything (HUD, AI, pickups) can resolve current weapon state.
+            // Replace, not Register, so re-entering play mode in the editor doesn't throw.
+            ServiceLocator.Replace<IWeaponService>(this);
+
             int idx = Mathf.Clamp(_startingSlot - 1, 0, _slots.Length - 1);
             EquipSlot(idx, instant: true);
         }
