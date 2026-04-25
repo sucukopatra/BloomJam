@@ -35,7 +35,6 @@ namespace BloomJam.Enemies
             if (_player == null) return;
 
             var dist = Vector3.Distance(transform.position, _player.position);
-Debug.Log(dist.ToString());
             switch (_state)
             {
                 case State.Idle:
