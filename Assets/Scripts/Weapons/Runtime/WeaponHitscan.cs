@@ -42,14 +42,11 @@ namespace BloomJam.Weapons
                 var info = new HitInfo(
                     sourceWeapon: e.Weapon,
                     collider:     hit.collider,
-                    point:        hit.point,
-                    normal:       hit.normal,
-                    direction:    e.Direction,
                     distance:     hit.distance,
                     baseDamage:   e.Weapon.Damage
                 );
 
-                target.TakeHit(in info);
+                target.TakeDamage(in info);
             }
             else if (_drawDebug)
             {
