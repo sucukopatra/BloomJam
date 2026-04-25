@@ -119,33 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &19109357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3534599403251867431, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-  m_PrefabInstance: {fileID: 979482026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &19109358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19109357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27149545b67edf48949250db1d8d600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FPSHeadBobModule
-  walkFrequency: 1.8
-  walkAmplitudeY: 0.05
-  walkAmplitudeX: 0.025
-  sprintFrequency: 2.5
-  sprintAmplitudeY: 0.1
-  sprintAmplitudeX: 0.05
-  crouchFrequency: 1.2
-  crouchAmplitudeY: 0.025
-  crouchAmplitudeX: 0.015
-  amplitudeSmoothing: 8
 --- !u!1 &398059550
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,139 +818,15 @@ PrefabInstance:
       propertyPath: _aimSource
       value: 
       objectReference: {fileID: 1446947943}
-    - target: {fileID: 6571262679576762669, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      propertyPath: _fireOrigin
+    - target: {fileID: 8867485872877837823, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
+      propertyPath: _aimSource
       value: 
-      objectReference: {fileID: 1489677706}
+      objectReference: {fileID: 1446947943}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3534599403251867431, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 19109358}
-    - targetCorrespondingSourceObject: {fileID: 4279562774619146152, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 979482034}
-    - targetCorrespondingSourceObject: {fileID: 4279562774619146152, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 979482033}
-    - targetCorrespondingSourceObject: {fileID: 9177622087222496179, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 979482029}
-    - targetCorrespondingSourceObject: {fileID: 9177622087222496179, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 979482028}
-    - targetCorrespondingSourceObject: {fileID: 9177622087222496179, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 979482032}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
---- !u!1 &979482027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9177622087222496179, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-  m_PrefabInstance: {fileID: 979482026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &979482028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979482027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84d459561accb4379c39ab604d56e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponAnimatorRelay
---- !u!95 &979482029
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979482027}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f54dfb5e19d8cd80af477ab027cc12b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!1 &979482030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4279562774619146152, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-  m_PrefabInstance: {fileID: 979482026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &979482031 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3709734111187382353, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-  m_PrefabInstance: {fileID: 979482026}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19109357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7823bc5c47dabb40aba3794587a708a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FPSController
---- !u!114 &979482032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979482027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b374794883ffb618402012f7338562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponMotionAnimator
-  _fps: {fileID: 979482031}
-  _maxSpeed: 6
---- !u!114 &979482033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979482030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5fbf8297a9ce2dc82d37662b20ea80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponController
-  _slots:
-  - {fileID: 11400000, guid: 962d4ec3f3e5e8cb6a48c8bc1893909f, type: 2}
-  - {fileID: 11400000, guid: 0a37fb7fc876d38e5b9738cf15609120, type: 2}
-  - {fileID: 11400000, guid: b18602da1cc303ef98d013d16854b930, type: 2}
-  _startingSlot: 1
-  _fireOrigin: {fileID: 1489677706}
-  _aimSource: {fileID: 1446947943}
-  _inputServiceOverride: {fileID: 0}
---- !u!114 &979482034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979482030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a51ca09f3354c562aada72c1e655d9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponHitscan
-  _hitMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  _triggerInteraction: 1
-  _drawDebug: 0
 --- !u!1 &1025471470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,11 +1296,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1489677706 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7521957709871830320, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
-  m_PrefabInstance: {fileID: 979482026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1847856597
 GameObject:
   m_ObjectHideFlags: 0
