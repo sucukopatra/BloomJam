@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f88552777a90d15825818a2f868220, type: 3}
   m_Name: Weapon_Pistol_Red
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponData
-  DisplayName: Red
+  DisplayName: Blue
   BehaviourKind: 0
   TintColor: {r: 1, g: 1, b: 1, a: 1}
   FireRate: 4
@@ -29,7 +29,7 @@ MonoBehaviour:
   MuzzleParticlePrefab: {fileID: 0}
   MuzzleFlashPrefab: {fileID: 8126514090225189266, guid: 3d2952d9de6a78911a998ca629dac95d, type: 3}
   ShakeForce: 0.2
-  ScreenFlashColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  ScreenFlashColor: {r: 0, g: 1, b: 1, a: 0.39215687}
   ScreenFlashIntensity: 0.15
   ScreenFlashDuration: 0.06
   FireClip: {fileID: 0}
