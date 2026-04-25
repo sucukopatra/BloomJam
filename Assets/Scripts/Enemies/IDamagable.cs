@@ -1,7 +1,7 @@
 using BloomJam.Combat;
 using UnityEngine;
 
-public interface IDamagable 
+public interface IDamageable 
 {
-   public void TakeDamage(HitInfo hitInfo);
+   public void TakeDamage(in HitInfo hitInfo);
 }

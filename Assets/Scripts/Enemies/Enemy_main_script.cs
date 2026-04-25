@@ -1,7 +1,7 @@
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
 using BloomJam.Combat;
-public class Enemy_main_script : MonoBehaviour,IDamagable
+public class Enemy_main_script : MonoBehaviour,IDamageable
 {
     
     [Header("Identity")]
@@ -22,7 +22,7 @@ public class Enemy_main_script : MonoBehaviour,IDamagable
     }
     
     
-    public void TakeDamage(HitInfo hitinfo)
+    public void TakeDamage(in HitInfo hitinfo)
     {
        // if (hitinfo.SourceWeapon != weakTo) return;
 
