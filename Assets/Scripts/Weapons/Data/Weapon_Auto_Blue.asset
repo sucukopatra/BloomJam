@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f88552777a90d15825818a2f868220, type: 3}
+  m_Name: Weapon_Auto_Blue
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponData
+  DisplayName: Blue
+  BehaviourKind: 1
+  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  FireMode: 1
+  FireRate: 3
+  Damage: 8
+  Range: 100
+  SpreadDegrees: 1.5
+  PelletsPerShot: 1
+  MagazineSize: 18
+  AutoReloadOnEmpty: 1
+  SwitchTime: 0.3
+  ReloadTime: 1.4
+  HandSpriteCycle:
+  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  MuzzleParticlePrefab: {fileID: 0}
+  MuzzleFlashPrefab: {fileID: 0}
+  ShakeForce: 0.15
+  ScreenFlashColor: {r: 0, g: 0, b: 1, a: 1}
+  ScreenFlashIntensity: 0.08
+  ScreenFlashDuration: 0.04
+  FireClip: {fileID: 0}
+  ReloadClip: {fileID: 0}
+  SwitchClip: {fileID: 0}
+  SwitchAnimTrigger: Switch
+  ReloadAnimTrigger: Reload
+  FireAnimTrigger: Fire

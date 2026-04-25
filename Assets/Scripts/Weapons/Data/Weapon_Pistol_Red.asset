@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f88552777a90d15825818a2f868220, type: 3}
+  m_Name: Weapon_Pistol_Red
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponData
+  DisplayName: Red
+  BehaviourKind: 0
+  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  FireMode: 0
+  FireRate: 4
+  Damage: 15
+  Range: 100
+  SpreadDegrees: 0
+  PelletsPerShot: 1
+  MagazineSize: 6
+  AutoReloadOnEmpty: 0
+  SwitchTime: 0.35
+  ReloadTime: 1
+  HandSpriteCycle:
+  - {fileID: -9095717837082945937, guid: bd7fe5ab5ef2a0213b7f1a056b5b944a, type: 3}
+  MuzzleParticlePrefab: {fileID: 0}
+  MuzzleFlashPrefab: {fileID: 0}
+  ShakeForce: 0.35
+  ScreenFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  ScreenFlashIntensity: 0.15
+  ScreenFlashDuration: 0.06
+  FireClip: {fileID: 0}
+  ReloadClip: {fileID: 0}
+  SwitchClip: {fileID: 0}
+  SwitchAnimTrigger: Switch
+  ReloadAnimTrigger: Reload
+  FireAnimTrigger: Fire

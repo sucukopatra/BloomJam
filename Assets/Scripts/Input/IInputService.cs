@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace YigitcanCaliskan
@@ -12,6 +13,14 @@ namespace YigitcanCaliskan
         bool SprintHeld { get; }
         bool CrouchHeld { get; }
         bool IsGamepadActive { get; }
+
+        // Weapon-related
+        bool AttackHeld { get; }
+        event Action OnAttack;
+        event Action OnReload;
+        event Action OnSlot1;
+        event Action OnSlot2;
+        event Action OnSlot3;
     }
 }
 

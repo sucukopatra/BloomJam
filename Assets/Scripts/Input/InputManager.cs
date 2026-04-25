@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
     public bool JumpReleased { get; private set; }
     public bool SprintHeld      { get; private set; }
     public bool CrouchHeld      { get; private set; }
+    public bool AttackHeld      { get; private set; }
     public bool IsGamepadActive => _playerInput != null &&
                                    _playerInput.currentControlScheme == "Gamepad";
 
@@ -27,6 +28,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
     public event Action OnPause;
     public event Action OnPrevious;
     public event Action OnNext;
+    public event Action OnReload;
+    public event Action OnSlot1;
+    public event Action OnSlot2;
+    public event Action OnSlot3;
 
     // UI - events
     public event Action OnNavigate;
@@ -49,6 +54,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
     private InputAction _pauseAction;
     private InputAction _previousAction;
     private InputAction _nextAction;
+    private InputAction _reloadAction;
+    private InputAction _slot1Action;
+    private InputAction _slot2Action;
+    private InputAction _slot3Action;
 
     // UI actions
     private InputAction _navigateAction;
@@ -83,6 +92,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
         _pauseAction      = _playerInput.actions["Pause"];
         _previousAction   = _playerInput.actions["Previous"];
         _nextAction       = _playerInput.actions["Next"];
+        _reloadAction     = _playerInput.actions["Reload"];
+        _slot1Action      = _playerInput.actions["Slot1"];
+        _slot2Action      = _playerInput.actions["Slot2"];
+        _slot3Action      = _playerInput.actions["Slot3"];
 
         // UI
         _navigateAction     = _playerInput.actions["Navigate"];
@@ -101,6 +114,7 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
         JumpReleased = _jumpAction.WasReleasedThisFrame();
         SprintHeld   = _sprintAction.IsPressed();
         CrouchHeld   = _crouchAction.IsPressed();
+        AttackHeld   = _attackAction != null && _attackAction.IsPressed();
     }
 
     private void RegisterEventInputs()
@@ -111,6 +125,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
         _pauseAction.performed        += HandlePause;
         _previousAction.performed     += HandlePrevious;
         _nextAction.performed         += HandleNext;
+        if (_reloadAction != null) _reloadAction.performed += HandleReload;
+        if (_slot1Action  != null) _slot1Action.performed  += HandleSlot1;
+        if (_slot2Action  != null) _slot2Action.performed  += HandleSlot2;
+        if (_slot3Action  != null) _slot3Action.performed  += HandleSlot3;
 
         _navigateAction.performed     += HandleNavigate;
         _advanceAction.performed      += HandleAdvance;
@@ -127,6 +145,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
         _pauseAction.performed        -= HandlePause;
         _previousAction.performed     -= HandlePrevious;
         _nextAction.performed         -= HandleNext;
+        if (_reloadAction != null) _reloadAction.performed -= HandleReload;
+        if (_slot1Action  != null) _slot1Action.performed  -= HandleSlot1;
+        if (_slot2Action  != null) _slot2Action.performed  -= HandleSlot2;
+        if (_slot3Action  != null) _slot3Action.performed  -= HandleSlot3;
 
         _navigateAction.performed     -= HandleNavigate;
         _advanceAction.performed      -= HandleAdvance;
@@ -141,6 +163,10 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
     private void HandlePause(InputAction.CallbackContext ctx)        => OnPause?.Invoke();
     private void HandlePrevious(InputAction.CallbackContext ctx)     => OnPrevious?.Invoke();
     private void HandleNext(InputAction.CallbackContext ctx)         => OnNext?.Invoke();
+    private void HandleReload(InputAction.CallbackContext ctx)       => OnReload?.Invoke();
+    private void HandleSlot1(InputAction.CallbackContext ctx)        => OnSlot1?.Invoke();
+    private void HandleSlot2(InputAction.CallbackContext ctx)        => OnSlot2?.Invoke();
+    private void HandleSlot3(InputAction.CallbackContext ctx)        => OnSlot3?.Invoke();
 
     // UI handlers
     private void HandleNavigate(InputAction.CallbackContext ctx)     => OnNavigate?.Invoke();
