@@ -1,5 +1,6 @@
 using System;
 using BloomJam;
+using BloomJam.Audio;
 using BloomJam.Player;
 using UnityEngine;
 using YigitcanCaliskan;
@@ -24,7 +25,10 @@ public class finishscripting : MonoBehaviour
     {
         ServiceLocator.Get<ISceneService>().LoadMainMenu();
     }
-  
+
+    private void Update()
+    {
+    }
 
     private void debugfinish(PlayerDiedEvent evt)
     {
