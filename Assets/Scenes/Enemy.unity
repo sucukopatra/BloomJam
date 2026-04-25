@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7418d613d1034bb448fa01e3da3aaac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyMainScript
-  type: 1
+  type: 2
   weakTo: 1
   pairingId: 1
   maxHealth: 200
