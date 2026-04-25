@@ -15,10 +15,10 @@ MonoBehaviour:
   DisplayName: Blue
   BehaviourKind: 1
   TintColor: {r: 1, g: 1, b: 1, a: 1}
-  FireRate: 3
+  FireRate: 10
   Damage: 8
-  Range: 100
-  SpreadDegrees: 1.5
+  Range: 50
+  SpreadDegrees: 2
   PelletsPerShot: 1
   MagazineSize: 18
   AutoReloadOnEmpty: 1
@@ -27,14 +27,16 @@ MonoBehaviour:
   HandSpriteCycle:
   - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   MuzzleParticlePrefab: {fileID: 0}
-  MuzzleFlashPrefab: {fileID: 0}
+  MuzzleFlashPrefab: {fileID: 8126514090225189266, guid: 3d2952d9de6a78911a998ca629dac95d, type: 3}
   ShakeForce: 0.15
-  ScreenFlashColor: {r: 0, g: 0, b: 1, a: 1}
+  ScreenFlashColor: {r: 0, g: 0, b: 1, a: 0.39215687}
   ScreenFlashIntensity: 0.08
   ScreenFlashDuration: 0.04
   FireClip: {fileID: 0}
   ReloadClip: {fileID: 0}
   SwitchClip: {fileID: 0}
+  DryFireClip: {fileID: 0}
   SwitchAnimTrigger: Switch
   ReloadAnimTrigger: Reload
   FireAnimTrigger: Fire
+  DryFireAnimTrigger: DryFire
