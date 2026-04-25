@@ -1,24 +1,32 @@
+using System;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
 using BloomJam.Combat;
+using BloomJam.Weapons;
+using YigitcanCaliskan;
+using YigitcanCaliskan.ServiceLocator;
 
 namespace BloomJam.Enemies
 {
-    [RequireComponent(typeof(Collider))]
+
     public class EnemyMainScript : MonoBehaviour, IDamageable
     {
         [Header("Identity")]
         [SerializeField] private EnemyType type;
-        [SerializeField] private WeaponType weakTo;
+        [SerializeField] private WeaponBehaviourKind weakTo;
         [SerializeField] private int pairingId;
 
         [Header("Stats")]
         [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private float maxshotgundistance = 100f;
 
         public float CurrentHealth { get; private set; }
         public EnemyType Type => type;
 
         private bool _isDead;
+        
+        
+        
 
         private void Awake()
         {
@@ -26,16 +34,37 @@ namespace BloomJam.Enemies
         }
 
         public void TakeDamage(in HitInfo hitinfo)
-        {
-            // Multiple pellets in one frame can drive HP below zero before Destroy
-            // takes effect, so guard against double-Die.
+        { 
             if (_isDead) return;
 
-            CurrentHealth -= hitinfo.BaseDamage;
+            if ( hitinfo.SourceWeapon.BehaviourKind != weakTo )
+            {
+                return;
+            }
 
+            var new_damage=0f;
+            
+            if (maxshotgundistance > hitinfo.Distance)
+            {
+                new_damage  = hitinfo.SourceWeapon.BehaviourKind == WeaponBehaviourKind.Shotgun
+                    ? hitinfo.BaseDamage * (1 - (hitinfo.Distance / maxshotgundistance))
+                    : hitinfo.BaseDamage;
+            }
+           
+           
+
+            CurrentHealth -= new_damage;
+            
             if (CurrentHealth <= 0f)
             {
-                _isDead = true;
+                Die();
+            }
+        }
+
+        private void Update()
+        {
+            if (ServiceLocator.Get<IInputService>().JumpPressed)
+            {
                 Die();
             }
         }
