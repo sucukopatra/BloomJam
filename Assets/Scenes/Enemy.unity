@@ -2379,6 +2379,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6571262679576762669, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
+      propertyPath: _aimSource
+      value: 
+      objectReference: {fileID: 634331724}
+    - target: {fileID: 6571262679576762669, guid: 9ec3ce9112a00f34795e398b6279769d, type: 3}
       propertyPath: _fireOrigin
       value: 
       objectReference: {fileID: 1449644603}

@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 236575803531478762}
   - component: {fileID: 5749031666976621704}
   - component: {fileID: 6571262679576762669}
+  - component: {fileID: 7606146517442279378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -323,9 +324,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a37fb7fc876d38e5b9738cf15609120, type: 2}
   - {fileID: 11400000, guid: b18602da1cc303ef98d013d16854b930, type: 2}
   _startingSlot: 1
-  _fireOrigin: {fileID: 0}
+  _fireOrigin: {fileID: 7521957709871830320}
   _aimSource: {fileID: 0}
   _inputServiceOverride: {fileID: 0}
+--- !u!114 &7606146517442279378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534599403251867431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27149545b67edf48949250db1d8d600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPSHeadBobModule
+  walkFrequency: 1.8
+  walkAmplitudeY: 0.05
+  walkAmplitudeX: 0.025
+  sprintFrequency: 2.5
+  sprintAmplitudeY: 0.1
+  sprintAmplitudeX: 0.05
+  crouchFrequency: 1.2
+  crouchAmplitudeY: 0.025
+  crouchAmplitudeX: 0.015
+  amplitudeSmoothing: 8
 --- !u!1 &3536335260018789705
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +561,8 @@ GameObject:
   - component: {fileID: 5251963013244531643}
   - component: {fileID: 2272872084145070795}
   - component: {fileID: 1631910345863216980}
+  - component: {fileID: 443770363557729141}
+  - component: {fileID: 8867485872877837823}
   m_Layer: 0
   m_Name: WeaponView
   m_TagString: Untagged
@@ -686,6 +711,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d309eaa7e087d87ea44aba54ee11dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponAudioPlayer
+--- !u!114 &443770363557729141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279562774619146152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a51ca09f3354c562aada72c1e655d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponHitscan
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _triggerInteraction: 1
+  _drawDebug: 0
+--- !u!114 &8867485872877837823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279562774619146152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5fbf8297a9ce2dc82d37662b20ea80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponController
+  _slots:
+  - {fileID: 11400000, guid: 962d4ec3f3e5e8cb6a48c8bc1893909f, type: 2}
+  - {fileID: 11400000, guid: 0a37fb7fc876d38e5b9738cf15609120, type: 2}
+  - {fileID: 11400000, guid: b18602da1cc303ef98d013d16854b930, type: 2}
+  _startingSlot: 1
+  _fireOrigin: {fileID: 7521957709871830320}
+  _aimSource: {fileID: 0}
+  _inputServiceOverride: {fileID: 0}
 --- !u!1 &9177622087222496179
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +759,9 @@ GameObject:
   - component: {fileID: 8943354617343128043}
   - component: {fileID: 8028502096698775251}
   - component: {fileID: 6183665777523241339}
+  - component: {fileID: 2121694670929858863}
+  - component: {fileID: 6345542653811018231}
+  - component: {fileID: 8695390031290718586}
   m_Layer: 0
   m_Name: HandSprite
   m_TagString: Untagged
@@ -714,8 +779,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: -0.3, z: 0.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3304638024664546328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -791,3 +856,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponHandView
   _applyTint: 0
+--- !u!95 &2121694670929858863
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177622087222496179}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f54dfb5e19d8cd80af477ab027cc12b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6345542653811018231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177622087222496179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84d459561accb4379c39ab604d56e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponAnimatorRelay
+--- !u!114 &8695390031290718586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177622087222496179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b374794883ffb618402012f7338562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponMotionAnimator
+  _fps: {fileID: 3709734111187382353}
+  _maxSpeed: 6
