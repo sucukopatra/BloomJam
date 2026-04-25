@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
 using BloomJam.Combat;
 using BloomJam.Weapons;
+using YigitcanCaliskan;
+using YigitcanCaliskan.ServiceLocator;
 
 namespace BloomJam.Enemies
 {
@@ -53,6 +56,16 @@ namespace BloomJam.Enemies
             {
                 enemyAnimator.PlayHurt();
             }
+        }
+
+        private void Update()
+        {
+            if (            ServiceLocator.Get<IInputService>().JumpPressed
+               )
+            {
+                Die(true);
+            }
+
         }
 
         private void Die(bool isHeadshot)
