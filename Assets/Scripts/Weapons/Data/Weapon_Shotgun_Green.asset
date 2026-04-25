@@ -17,7 +17,7 @@ MonoBehaviour:
   TintColor: {r: 1, g: 1, b: 1, a: 1}
   FireRate: 1.2
   Damage: 10
-  Range: 100
+  Range: 30
   SpreadDegrees: 8
   PelletsPerShot: 8
   MagazineSize: 4
@@ -27,14 +27,16 @@ MonoBehaviour:
   HandSpriteCycle:
   - {fileID: -2413806693520163455, guid: 75e0b45c64306e894a31472e5cc7af72, type: 3}
   MuzzleParticlePrefab: {fileID: 0}
-  MuzzleFlashPrefab: {fileID: 0}
-  ShakeForce: 0.9
-  ScreenFlashColor: {r: 0, g: 1, b: 0, a: 1}
+  MuzzleFlashPrefab: {fileID: 8126514090225189266, guid: 3d2952d9de6a78911a998ca629dac95d, type: 3}
+  ShakeForce: 0.5
+  ScreenFlashColor: {r: 0, g: 1, b: 0, a: 0.39215687}
   ScreenFlashIntensity: 0.3
   ScreenFlashDuration: 0.12
   FireClip: {fileID: 0}
   ReloadClip: {fileID: 0}
   SwitchClip: {fileID: 0}
+  DryFireClip: {fileID: 0}
   SwitchAnimTrigger: Switch
   ReloadAnimTrigger: Reload
   FireAnimTrigger: Fire
+  DryFireAnimTrigger: DryFire
