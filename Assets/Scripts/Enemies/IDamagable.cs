@@ -1,6 +1,7 @@
+using BloomJam.Combat;
 using UnityEngine;
 
 public interface IDamagable 
 {
-   public void TakeDamage(int damage,int weapontype);
+   public void TakeDamage(HitInfo hitInfo);
 }

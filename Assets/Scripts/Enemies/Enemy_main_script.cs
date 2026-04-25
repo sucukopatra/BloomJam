@@ -1,7 +1,7 @@
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
-
-public class Enemy_main_script : MonoBehaviour
+using BloomJam.Combat;
+public class Enemy_main_script : MonoBehaviour,IDamagable
 {
     
     [Header("Identity")]
@@ -22,18 +22,18 @@ public class Enemy_main_script : MonoBehaviour
     }
     
     
-  /*  public void TakeDamage(HitInfo hitinfo)
+    public void TakeDamage(HitInfo hitinfo)
     {
-        if (weapontype != weakTo) return;
+       // if (hitinfo.SourceWeapon != weakTo) return;
 
-        CurrentHealth -= damage;
+        CurrentHealth -= hitinfo.BaseDamage;
 
         if (CurrentHealth <= 0f)
         {
             Die();
         }
     }
-    */
+    
 
         private void Die()
         {
