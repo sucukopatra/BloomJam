@@ -36,20 +36,17 @@ namespace BloomJam.Weapons
             {
                 if (_drawDebug) Debug.DrawLine(e.Origin, hit.point, Color.yellow, 0.15f);
 
-                IDamagable target = hit.collider.GetComponentInParent<IDamagable>();
+                IDamageable target = hit.collider.GetComponentInParent<IDamageable>();
                 if (target == null) return;
 
                 var info = new HitInfo(
                     sourceWeapon: e.Weapon,
                     collider:     hit.collider,
-                    point:        hit.point,
-                    normal:       hit.normal,
-                    direction:    e.Direction,
                     distance:     hit.distance,
                     baseDamage:   e.Weapon.Damage
                 );
 
-                target.TakeDamage(info);
+                target.TakeDamage(in info);
             }
             else if (_drawDebug)
             {
