@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using BloomJam.Enemies;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class WallScript : MonoBehaviour
     {
         _renderer = GetComponent<Renderer>();
         my_material = _renderer.material;
+        my_material.mainTexture=texture_start;
+
     } 
 
     private void OnEnable()  => EventBus.Subscribe<EnemyDiedEvent>(OnEnemyDied);
@@ -40,8 +43,16 @@ public class WallScript : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(play_frames());
 
-   private IEnumerator play_frames()
+        }
+    }
+
+    private IEnumerator play_frames()
     {
 
         foreach (var frames in texture_frames)
