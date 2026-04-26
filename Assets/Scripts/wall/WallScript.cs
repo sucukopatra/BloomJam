@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using BloomJam.Audio;
 using BloomJam.Enemies;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
-using Random = System.Random;
+using YigitcanCaliskan.ServiceLocator;
 
 [RequireComponent(typeof(Renderer))]
 public class WallScript : MonoBehaviour
@@ -37,12 +38,31 @@ public class WallScript : MonoBehaviour
     private MaterialPropertyBlock _block;
     private bool _alreadyActivated;
     private int finis_color_id;
+    private int id;
+    
+    
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip changed;
 
     private void Awake()
     {
-       // finis_color_id= Random.Range(0, 4);
-        texture_memory=transform.parent.transform.parent.GetComponent<texture_memory>();
+        
+        
+        
+       finis_color_id = UnityEngine.Random.Range(1, 4);
+       if (triggerType == EnemyType.Blue)
+       {
+           pairingId = UnityEngine.Random.Range(1, 8);
 
+       }
+       else
+       {
+           pairingId = UnityEngine.Random.Range(1, 6);
+
+       }
+        texture_memory=transform.parent.GetComponent<texture_memory>();
+        changed = texture_memory.Wallclip;
         _renderer = GetComponent<Renderer>();
         _block = new MaterialPropertyBlock();
         red1 = texture_memory.red1;
@@ -110,6 +130,7 @@ public class WallScript : MonoBehaviour
 
     private void ApplyFrame(WallFrame frame)
     {
+        ServiceLocator.Get<IAudioService>().PlaySFX(changed);
       //  Debug.Log($"base:{frame.base_map}  normal:{frame.normal_map}  metallic:{frame.metallic_map}");
         _renderer.GetPropertyBlock(_block);
         if (frame.base_map     != null) _block.SetTexture("_BaseMap",          frame.base_map);
@@ -118,3 +139,6 @@ public class WallScript : MonoBehaviour
         _renderer.SetPropertyBlock(_block);
     }
 }
+
+
+

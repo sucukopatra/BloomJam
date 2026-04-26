@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1361256823213620942
+--- !u!1 &2893608256557626288
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,193 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8860080851459026778}
-  - component: {fileID: 5412672943518578174}
-  - component: {fileID: 273385856211366816}
+  - component: {fileID: 2206843297441458362}
+  - component: {fileID: 862842496583401681}
+  - component: {fileID: 4974781755811999557}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2206843297441458362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893608256557626288}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2983693, y: -0, z: -0, w: 0.9544505}
+  m_LocalPosition: {x: -9.63, y: 0.75, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1714125831739852145}
+  m_LocalEulerAnglesHint: {x: -34.719, y: 0, z: 0}
+--- !u!65 &862842496583401681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893608256557626288}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.4, y: 0.7065358, z: 4.99}
+  m_Center: {x: -0.3614241, y: 0.6436909, z: -0.446136}
+--- !u!114 &4974781755811999557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893608256557626288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff400214ba429124b8d87282ddd6b4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyHitbox
+  owner: {fileID: 3177954295570494969}
+  isHeadshot: 1
+--- !u!1 &6856942554966109740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714125831739852145}
+  - component: {fileID: 3177954295570494969}
+  - component: {fileID: 8797068244625208203}
+  - component: {fileID: 6287382110962789275}
+  - component: {fileID: 1902294559591463806}
+  m_Layer: 0
+  m_Name: Normal_Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1714125831739852145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856942554966109740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -7.51, y: 4.68, z: -0.46}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 3256538243412279828}
+  - {fileID: 2206843297441458362}
+  - {fileID: 1573544222138818906}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &3177954295570494969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856942554966109740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7418d613d1034bb448fa01e3da3aaac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyMainScript
+  type: 2
+  weakTo: 0
+  pairingId: 1
+  maxHealth: 100
+  maxshotgundistance: 100
+  enemyAnimator: {fileID: 4930067148870082714}
+  enemyAI: {fileID: 8797068244625208203}
+  hurt: {fileID: 0}
+  dead: {fileID: 0}
+  basic: {fileID: 0}
+--- !u!114 &8797068244625208203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856942554966109740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4498c0d3f018a3740a90a84b639ab0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyAI
+  detectionRange: 12
+  attackRange: 2.5
+  attackCooldown: 1
+  enemyAnimator: {fileID: 4930067148870082714}
+--- !u!54 &6287382110962789275
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856942554966109740}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &1902294559591463806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856942554966109740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c76728cc8a714745a9040065662b25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.WalkingMovement
+  speed: 6
+--- !u!1 &7431771054123074282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3256538243412279828}
+  - component: {fileID: 4386803130477577552}
+  - component: {fileID: 5927560459624125547}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -18,28 +202,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8860080851459026778
+--- !u!4 &3256538243412279828
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361256823213620942}
+  m_GameObject: {fileID: 7431771054123074282}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 2.24}
+  m_LocalRotation: {x: -0.21097851, y: 0.21097851, z: 0.67489856, w: 0.67489856}
+  m_LocalPosition: {x: 0, y: 0.33, z: 1.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6743273568589833535}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!65 &5412672943518578174
+  m_Father: {fileID: 1714125831739852145}
+  m_LocalEulerAnglesHint: {x: -34.719, y: 0, z: 90}
+--- !u!65 &4386803130477577552
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361256823213620942}
+  m_GameObject: {fileID: 7431771054123074282}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -54,21 +238,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 19.94552, z: 10.02667}
   m_Center: {x: 0, y: -2.2165053, z: 0.027778149}
---- !u!114 &273385856211366816
+--- !u!114 &5927560459624125547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361256823213620942}
+  m_GameObject: {fileID: 7431771054123074282}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff400214ba429124b8d87282ddd6b4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyHitbox
-  owner: {fileID: 3566572002326366678}
+  owner: {fileID: 3177954295570494969}
   isHeadshot: 0
---- !u!1 &1896911227699671345
+--- !u!1 &9081546197874263230
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,11 +260,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5163247488207564793}
-  - component: {fileID: 373683393183603261}
-  - component: {fileID: 1055628808100829956}
-  - component: {fileID: 2335749944720989233}
-  - component: {fileID: 4028423344809600179}
+  - component: {fileID: 1573544222138818906}
+  - component: {fileID: 3555006625996993680}
+  - component: {fileID: 5410411323374527847}
+  - component: {fileID: 4930067148870082714}
+  - component: {fileID: 7055331676000261568}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -88,29 +272,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5163247488207564793
+--- !u!4 &1573544222138818906
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896911227699671345}
+  m_GameObject: {fileID: 9081546197874263230}
   serializedVersion: 2
   m_LocalRotation: {x: 0.32650557, y: -0.32650557, z: 0.6272114, w: 0.6272114}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6743273568589833535}
+  m_Father: {fileID: 1714125831739852145}
   m_LocalEulerAnglesHint: {x: 55, y: 0, z: 90}
---- !u!212 &373683393183603261
+--- !u!212 &3555006625996993680
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896911227699671345}
+  m_GameObject: {fileID: 9081546197874263230}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -162,14 +346,14 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &1055628808100829956
+--- !u!95 &5410411323374527847
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896911227699671345}
+  m_GameObject: {fileID: 9081546197874263230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7207dec942ece1540a681c024d23e01f, type: 2}
@@ -184,213 +368,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2335749944720989233
+--- !u!114 &4930067148870082714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896911227699671345}
+  m_GameObject: {fileID: 9081546197874263230}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af0c2633c4aec541874161f57f3f359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyAnimator
-  animator: {fileID: 1055628808100829956}
-  spriteRenderer: {fileID: 373683393183603261}
---- !u!114 &4028423344809600179
+  animator: {fileID: 5410411323374527847}
+  spriteRenderer: {fileID: 3555006625996993680}
+--- !u!114 &7055331676000261568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896911227699671345}
+  m_GameObject: {fileID: 9081546197874263230}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a03839e9d50424ea9c485a25a1fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyBillboard
   lockYAxis: 1
---- !u!1 &5815771060104111944
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6743273568589833535}
-  - component: {fileID: 3566572002326366678}
-  - component: {fileID: 736017551923669620}
-  - component: {fileID: 1438969125796843419}
-  - component: {fileID: 9010187638228404084}
-  m_Layer: 0
-  m_Name: Normal_Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6743273568589833535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815771060104111944}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.68, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 8860080851459026778}
-  - {fileID: 2714830903732315764}
-  - {fileID: 5163247488207564793}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &3566572002326366678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815771060104111944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7418d613d1034bb448fa01e3da3aaac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyMainScript
-  type: 2
-  weakTo: 0
-  pairingId: 1
-  maxHealth: 100
-  maxshotgundistance: 100
-  enemyAnimator: {fileID: 2335749944720989233}
-  enemyAI: {fileID: 736017551923669620}
---- !u!114 &736017551923669620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815771060104111944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4498c0d3f018a3740a90a84b639ab0bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyAI
-  detectionRange: 12
-  attackRange: 2.5
-  attackCooldown: 1
-  attackDamage: 10
-  attackHitDelay: 0.4
-  enemyAnimator: {fileID: 2335749944720989233}
---- !u!54 &1438969125796843419
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815771060104111944}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &9010187638228404084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815771060104111944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c76728cc8a714745a9040065662b25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.WalkingMovement
-  speed: 6
---- !u!1 &8667488077665035657
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2714830903732315764}
-  - component: {fileID: 728995500961218924}
-  - component: {fileID: 8711312010608361840}
-  m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2714830903732315764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667488077665035657}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.98, y: -0, z: 1.23}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6743273568589833535}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!65 &728995500961218924
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667488077665035657}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.70653576, z: 1}
-  m_Center: {x: 2.0419737e-15, y: 0.643691, z: 0}
---- !u!114 &8711312010608361840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667488077665035657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff400214ba429124b8d87282ddd6b4cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyHitbox
-  owner: {fileID: 3566572002326366678}
-  isHeadshot: 1

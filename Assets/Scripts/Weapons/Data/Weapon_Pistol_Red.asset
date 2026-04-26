@@ -38,10 +38,10 @@ MonoBehaviour:
   ScreenFlashColor: {r: 0, g: 1, b: 1, a: 0.19607843}
   ScreenFlashIntensity: 0.15
   ScreenFlashDuration: 0.06
-  FireClip: {fileID: 0}
-  ReloadClip: {fileID: 0}
-  SwitchClip: {fileID: 0}
-  DryFireClip: {fileID: 0}
+  FireClip: {fileID: 8300000, guid: b351219c5590809468a3132143c31d6a, type: 3}
+  ReloadClip: {fileID: 8300000, guid: f49327e884a659d4abaed2e56d282aa6, type: 3}
+  SwitchClip: {fileID: 8300000, guid: e5e551d849d8eb34b92207db9f4c686f, type: 3}
+  DryFireClip: {fileID: 8300000, guid: 78c7ebf9f12d51e49b1db21d71a3e0ae, type: 3}
   SwitchAnimTrigger: Switch
   ReloadAnimTrigger: Reload
   FireAnimTrigger: Fire
