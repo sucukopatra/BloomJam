@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponData
   DisplayName: Red
   BehaviourKind: 0
-  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  TintColor: {r: 1, g: 0, b: 0, a: 1}
   FireRate: 4
   Damage: 15
   Range: 50
@@ -25,11 +25,17 @@ MonoBehaviour:
   SwitchTime: 0.35
   ReloadTime: 1
   HandSpriteCycle:
-  - {fileID: -9095717837082945937, guid: bd7fe5ab5ef2a0213b7f1a056b5b944a, type: 3}
+  - {fileID: 21300000, guid: 297ee46b37a1ef9e898ff46e38a2df19, type: 3}
+  - {fileID: 21300000, guid: daee856c296f602f58117194d6b32b22, type: 3}
+  - {fileID: 21300000, guid: b45f0342e9a9eb0c483743817e5d1656, type: 3}
+  - {fileID: 21300000, guid: bb8e748425190e0eea3ddc6b8adc5435, type: 3}
+  - {fileID: 21300000, guid: 7264c0ade9f8374358d071eeaf5b2c0f, type: 3}
+  - {fileID: 21300000, guid: f2c8b37fbbb9c4a8fa24ba083d6fd71f, type: 3}
+  - {fileID: 21300000, guid: c8ec71ad0738111f8b5e6cd3a635c339, type: 3}
   MuzzleParticlePrefab: {fileID: 0}
   MuzzleFlashPrefab: {fileID: 8126514090225189266, guid: 3d2952d9de6a78911a998ca629dac95d, type: 3}
   ShakeForce: 0.2
-  ScreenFlashColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  ScreenFlashColor: {r: 1, g: 0, b: 0, a: 0.19607843}
   ScreenFlashIntensity: 0.15
   ScreenFlashDuration: 0.06
   FireClip: {fileID: 0}

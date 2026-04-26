@@ -26,8 +26,11 @@ namespace BloomJam.Weapons
         [SerializeField, Tooltip("FPSController to read state from. Auto-resolved from parents on Awake if left empty.")]
         private FPSController _fps;
 
-        [SerializeField, Tooltip("Speed used to normalize SpeedNorm (typically your sprint speed).")]
-        [Min(0.01f)] private float _maxSpeed = 6f;
+        [SerializeField, Tooltip("Smoothing time for SpeedNorm transitions between idle/walk/run.")]
+        [Min(0f)] private float _speedNormSmoothTime = 0.1f;
+
+        [SerializeField, Tooltip("How long the air/ground state must hold before Jump/Land triggers fire. Prevents flickering ground checks from re-firing triggers mid-jump.")]
+        [Min(0f)] private float _airDebounceTime = 0.05f;
 
         private Animator _animator;
 
@@ -35,12 +38,12 @@ namespace BloomJam.Weapons
         private static readonly int HashSpeedNorm = Animator.StringToHash("SpeedNorm");
         private static readonly int HashGrounded  = Animator.StringToHash("Grounded");
         private static readonly int HashSprinting = Animator.StringToHash("Sprinting");
-        private static readonly int HashCrouching = Animator.StringToHash("Crouching");
         private static readonly int HashFalling   = Animator.StringToHash("Falling");
         private static readonly int HashJump      = Animator.StringToHash("Jump");
         private static readonly int HashLand      = Animator.StringToHash("Land");
 
-        private PlayerState _prevState;
+        private bool _stableAir;
+        private float _airChangeTimer;
 
         private void Awake()
         {
@@ -52,8 +55,12 @@ namespace BloomJam.Weapons
 
         private void OnEnable()
         {
-            if (_fps != null) _prevState = _fps.State;
+            if (_fps != null) _stableAir = IsAirState(_fps.State);
+            _airChangeTimer = 0f;
         }
+
+        private static bool IsAirState(PlayerState s)
+            => s == PlayerState.Falling || s == PlayerState.Jumping;
 
         private void Update()
         {
@@ -64,24 +71,41 @@ namespace BloomJam.Weapons
             float speed = v.magnitude;
 
             _animator.SetFloat(HashSpeed, speed);
-            _animator.SetFloat(HashSpeedNorm, Mathf.Clamp01(speed / _maxSpeed));
+
+            float speedNormTarget = speed < 0.1f ? 0f : (_fps.IsSprinting ? 1f : 0.5f);
+            _animator.SetFloat(HashSpeedNorm, speedNormTarget, _speedNormSmoothTime, Time.deltaTime);
             _animator.SetBool(HashGrounded, _fps.IsGrounded);
             _animator.SetBool(HashSprinting, _fps.IsSprinting);
-            _animator.SetBool(HashCrouching, _fps.IsCrouching);
             _animator.SetBool(HashFalling, _fps.State == PlayerState.Falling);
 
-            // Edge triggers
-            PlayerState now = _fps.State;
-            bool wasAir   = _prevState == PlayerState.Falling || _prevState == PlayerState.Jumping;
-            bool isAir    = now        == PlayerState.Falling || now        == PlayerState.Jumping;
+            // Debounced air-state edge triggers — brief IsGrounded flickers from the
+            // CheckSphere ground probe must NOT re-fire Jump/Land mid-jump.
+            bool airNow = IsAirState(_fps.State);
 
-            if (!wasAir && now == PlayerState.Jumping)
-                _animator.SetTrigger(HashJump);
+            if (airNow == _stableAir)
+            {
+                _airChangeTimer = 0f;
+            }
+            else
+            {
+                _airChangeTimer += Time.deltaTime;
+                if (_airChangeTimer >= _airDebounceTime)
+                {
+                    _stableAir = airNow;
+                    _airChangeTimer = 0f;
 
-            if (wasAir && !isAir)
-                _animator.SetTrigger(HashLand);
-
-            _prevState = now;
+                    if (_stableAir)
+                    {
+                        _animator.ResetTrigger(HashLand);
+                        _animator.SetTrigger(HashJump);
+                    }
+                    else
+                    {
+                        _animator.ResetTrigger(HashJump);
+                        _animator.SetTrigger(HashLand);
+                    }
+                }
+            }
         }
     }
 }
