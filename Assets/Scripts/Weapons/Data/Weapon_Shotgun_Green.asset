@@ -12,24 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f88552777a90d15825818a2f868220, type: 3}
   m_Name: Weapon_Shotgun_Green
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Weapons.WeaponData
-  DisplayName: Red
+  DisplayName: Green
   BehaviourKind: 2
-  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  TintColor: {r: 0.044874907, g: 1, b: 0, a: 1}
   FireRate: 1.2
   Damage: 10
   Range: 30
-  SpreadDegrees: 8
+  SpreadDegrees: 30
   PelletsPerShot: 8
   MagazineSize: 4
   AutoReloadOnEmpty: 0
   SwitchTime: 0.5
   ReloadTime: 1.8
   HandSpriteCycle:
-  - {fileID: -2413806693520163455, guid: 75e0b45c64306e894a31472e5cc7af72, type: 3}
+  - {fileID: 21300000, guid: 297ee46b37a1ef9e898ff46e38a2df19, type: 3}
+  - {fileID: 21300000, guid: daee856c296f602f58117194d6b32b22, type: 3}
+  - {fileID: 21300000, guid: b45f0342e9a9eb0c483743817e5d1656, type: 3}
+  - {fileID: 21300000, guid: bb8e748425190e0eea3ddc6b8adc5435, type: 3}
+  - {fileID: 21300000, guid: 7264c0ade9f8374358d071eeaf5b2c0f, type: 3}
+  - {fileID: 21300000, guid: f2c8b37fbbb9c4a8fa24ba083d6fd71f, type: 3}
+  - {fileID: 21300000, guid: c8ec71ad0738111f8b5e6cd3a635c339, type: 3}
   MuzzleParticlePrefab: {fileID: 0}
   MuzzleFlashPrefab: {fileID: 8126514090225189266, guid: 3d2952d9de6a78911a998ca629dac95d, type: 3}
   ShakeForce: 0.5
-  ScreenFlashColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  ScreenFlashColor: {r: 0, g: 1, b: 0, a: 0.19607843}
   ScreenFlashIntensity: 0.3
   ScreenFlashDuration: 0.12
   FireClip: {fileID: 0}

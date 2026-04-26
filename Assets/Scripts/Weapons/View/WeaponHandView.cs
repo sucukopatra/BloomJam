@@ -5,8 +5,8 @@ namespace BloomJam.Weapons
 {
     /// <summary>
     /// Drives the right-hand SpriteRenderer that represents the current weapon.
-    /// Each shot advances through WeaponData.HandSpriteCycle (clamped). Reload restores index 0.
-    /// Switch swaps to the new weapon's first sprite and tints to its color.
+    /// Sprite index follows ammo percentage: full mag = sprite[0], empty = last sprite.
+    /// Switch/Reload restore sprite[0] and tint to WeaponData.TintColor.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer))]
     public sealed class WeaponHandView : MonoBehaviour
@@ -16,7 +16,6 @@ namespace BloomJam.Weapons
 
         private SpriteRenderer _renderer;
         private WeaponData _data;
-        private int _shotIndex;
 
         private void Awake()
         {
@@ -40,8 +39,7 @@ namespace BloomJam.Weapons
         private void OnSwitched(WeaponSwitchedEvent e)
         {
             _data = e.Weapon;
-            _shotIndex = 0;
-            ApplyCurrentSprite();
+            ApplySpriteForAmmo(_data != null ? _data.MagazineSize : 0);
             if (_applyTint && _data != null)
                 _renderer.color = _data.TintColor;
         }
@@ -49,21 +47,23 @@ namespace BloomJam.Weapons
         private void OnFired(WeaponFiredEvent e)
         {
             if (_data == null || e.Weapon != _data) return;
-            _shotIndex++;
-            ApplyCurrentSprite();
+            ApplySpriteForAmmo(e.ShotsLeftInMag);
         }
 
         private void OnReloaded(WeaponReloadedEvent e)
         {
             if (_data == null || e.Weapon != _data) return;
-            _shotIndex = 0;
-            ApplyCurrentSprite();
+            ApplySpriteForAmmo(_data.MagazineSize);
         }
 
-        private void ApplyCurrentSprite()
+        private void ApplySpriteForAmmo(int ammoLeft)
         {
             if (_data == null || _data.HandSpriteCycle == null || _data.HandSpriteCycle.Length == 0) return;
-            int idx = Mathf.Clamp(_shotIndex, 0, _data.HandSpriteCycle.Length - 1);
+
+            int len = _data.HandSpriteCycle.Length;
+            int magSize = Mathf.Max(1, _data.MagazineSize);
+            float spent = 1f - (float)ammoLeft / magSize;          // 0 = full, 1 = empty
+            int idx = Mathf.Clamp(Mathf.RoundToInt(spent * (len - 1)), 0, len - 1);
             _renderer.sprite = _data.HandSpriteCycle[idx];
         }
     }
