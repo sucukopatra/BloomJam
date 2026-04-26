@@ -8,7 +8,7 @@ using YigitcanCaliskan.ServiceLocator;
 
 namespace BloomJam.Audio
 {
-    public class AudioManager : MonoBehaviour, IBootstrapService,IAudioService
+    public class AudioManager : MonoBehaviour, IBootstrapService, IAudioService
     {
         public static AudioManager Instance { get; private set; }
 
@@ -16,21 +16,18 @@ namespace BloomJam.Audio
         [SerializeField] private AudioSource bgmSource;
         [SerializeField] private AudioSource sfxSource;
 
+        [Header("BGM Klipleri")]
+        [SerializeField] private AudioClip mainMenuBGM;
+        [SerializeField] private AudioClip gameplayBGM;
+        [SerializeField] private AudioClip creditsBGM;
+        [SerializeField, Range(0f, 1f)] private float bgmVolume = 0.6f;
+
         [Header("SFX Klipleri")]
         [SerializeField] private AudioClip playerHurtClip;
         [SerializeField] private AudioClip playerDeathClip;
         [SerializeField] private AudioClip enemyDeathClip;
 
-        [Header("BGM")]
-        [SerializeField] private AudioClip defaultBGM;
-        [SerializeField, Range(0f, 1f)] private float bgmVolume = 0.6f;
-
         private void Awake() => Instance = this;
-
-        private void Start()
-        {
-            if (defaultBGM != null) PlayBGM(defaultBGM);
-        }
 
         private void OnEnable()
         {
@@ -46,21 +43,22 @@ namespace BloomJam.Audio
             EventBus.Unsubscribe<EnemyDiedEvent>(OnEnemyDied);
         }
 
-        public void Register()
-        {
-            ServiceLocator.Register<IAudioService>(this);
-
-        }
-
-        // ── SFX ──────────────────────────────────────────────
-        public void PlaySFX(AudioClip clip, float volume = 1f)
-        {
-            if (clip == null) return;
-            sfxSource.PlayOneShot(clip, volume);
-        }
+        public void Register() => ServiceLocator.Register<IAudioService>(this);
 
         // ── BGM ──────────────────────────────────────────────
-        public void PlayBGM(AudioClip clip)
+        public void PlayBGM(BGMTrack track)
+        {
+            var clip = track switch
+            {
+                BGMTrack.MainMenu  => mainMenuBGM,
+                BGMTrack.Gameplay  => gameplayBGM,
+                BGMTrack.Credits   => creditsBGM,
+                _                  => null
+            };
+            PlayClip(clip);
+        }
+
+        private void PlayClip(AudioClip clip)
         {
             if (clip == null || bgmSource.clip == clip) return;
             bgmSource.clip   = clip;
@@ -87,6 +85,13 @@ namespace BloomJam.Audio
             }
             bgmSource.volume = target;
             if (target <= 0f) bgmSource.Stop();
+        }
+
+        // ── SFX ──────────────────────────────────────────────
+        public void PlaySFX(AudioClip clip, float volume = 1f)
+        {
+            if (clip == null) return;
+            sfxSource.PlayOneShot(clip, volume);
         }
 
         // ── EventBus handlers ────────────────────────────────

@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 5749031666976621704}
   - component: {fileID: 6571262679576762669}
   - component: {fileID: 7606146517442279378}
+  - component: {fileID: 8937492571643318093}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -349,6 +350,19 @@ MonoBehaviour:
   crouchAmplitudeY: 0.025
   crouchAmplitudeX: 0.015
   amplitudeSmoothing: 8
+--- !u!114 &8937492571643318093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534599403251867431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3c483bb8e979146b43ae0b3ce1eb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Player.PlayerHealth
+  maxHealth: 100
 --- !u!1 &3536335260018789705
 GameObject:
   m_ObjectHideFlags: 0

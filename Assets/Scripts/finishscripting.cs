@@ -8,7 +8,7 @@ using YigitcanCaliskan.EventBus;
 using YigitcanCaliskan.ServiceLocator;
 
 public class finishscripting : MonoBehaviour
-{ 
+{
     private void OnEnable()
     {
         ServiceLocator.Get<IInputService>().OnReload += downlo;
@@ -23,7 +23,7 @@ public class finishscripting : MonoBehaviour
 
     public void downlo()
     {
-     //   ServiceLocator.Get<ISceneService>().LoadMainMenu();
+        ServiceLocator.Get<ISceneService>().LoadMainMenu();
     }
 
     private void Update()
@@ -34,5 +34,5 @@ public class finishscripting : MonoBehaviour
     {
         Debug.Log("player geberdi");
     }
-   
+
 }

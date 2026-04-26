@@ -5,7 +5,6 @@ using System.Reflection;
 using BloomJam;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using YigitcanCaliskan.ServiceLocator;
 
 namespace YigitcanCaliskan.Bootstrap
 {
@@ -27,8 +26,8 @@ namespace YigitcanCaliskan.Bootstrap
 
         private void Start()
         {
-
-            ServiceLocator.ServiceLocator.Get<ISceneService>().LoadMainMenu();
+           
+          YigitcanCaliskan.ServiceLocator.ServiceLocator.Get<ISceneService>().LoadMainMenu();
         }
     }
 }
