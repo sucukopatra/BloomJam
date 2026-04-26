@@ -1,4 +1,5 @@
 using System;
+using BloomJam.Audio;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
 using BloomJam.Combat;
@@ -27,10 +28,19 @@ namespace BloomJam.Enemies
         public EnemyType Type => type;
 
         private bool _isDead;
+        
+        [SerializeField] private AudioClip hurt;
+        [SerializeField] private AudioClip dead;
+        [SerializeField] private AudioClip basic;
+
+        private enemy_audio parent;
 
         private void Awake()
         {
             CurrentHealth = maxHealth;
+            parent = transform.parent.gameObject.GetComponent<enemy_audio>();
+            hurt = parent.hurt;
+            dead = parent.dead;
         }
 
         public void TakeDamage(in HitInfo hitinfo)
@@ -58,28 +68,28 @@ namespace BloomJam.Enemies
                 Debug.Log("body vurdum"+newDamage.ToString());
 
             }
-            if (CurrentHealth <= 0f)
+            if (CurrentHealth <= 0f ||hitinfo.IsHeadshot)
             {
+                ServiceLocator.Get<IAudioService>().PlaySFX(dead);
                 Die(hitinfo.IsHeadshot);
             }
             else
             {
-                if (!hitinfo.IsHeadshot)
+                ServiceLocator.Get<IAudioService>().PlaySFX(hurt);
+
                 enemyAnimator.PlayHurt();
-                else
-                    Die(hitinfo.IsHeadshot);
+               
 
             }
         }
 
         private void Update()
         {
-            if (            ServiceLocator.Get<IInputService>().JumpPressed
-               )
+            if (Input.GetKeyDown(KeyCode.J))
             {
-            //    Die(true);
-            }
+                Die(true);
 
+            }
         }
 
         private void Die(bool isHeadshot)

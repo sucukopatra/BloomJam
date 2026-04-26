@@ -1,3 +1,4 @@
+using BloomJam.Player;
 using UnityEngine;
 
 namespace BloomJam.Enemies
@@ -11,6 +12,7 @@ namespace BloomJam.Enemies
 
         [Header("Refs")]
         [SerializeField] private EnemyAnimator enemyAnimator;
+        public GameObject player;
 
         private IEnemyMovement _movement;
         private Transform      _player;
@@ -18,6 +20,8 @@ namespace BloomJam.Enemies
 
         private enum State { Idle, Chase, Attack }
         private State _state = State.Idle;
+
+        public int damage;
 
         private void Awake()
         {
@@ -82,7 +86,7 @@ namespace BloomJam.Enemies
         {
             enemyAnimator.PlayAttack();
             _nextAttackTime = Time.time + attackCooldown;
-            // TODO: oyuncuya IDamageable.TakeDamage ile hasar uygula
+            _player.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
 
         public void OnDeath() => enabled = false;
