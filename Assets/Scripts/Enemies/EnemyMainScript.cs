@@ -48,13 +48,27 @@ namespace BloomJam.Enemies
 
             CurrentHealth -= (int)newDamage;
 
+            if (hitinfo.IsHeadshot)
+            {
+                Debug.Log("head vurdum"+newDamage.ToString());
+
+            }
+            else
+            {
+                Debug.Log("body vurdum"+newDamage.ToString());
+
+            }
             if (CurrentHealth <= 0f)
             {
                 Die(hitinfo.IsHeadshot);
             }
             else
             {
+                if (!hitinfo.IsHeadshot)
                 enemyAnimator.PlayHurt();
+                else
+                    Die(hitinfo.IsHeadshot);
+
             }
         }
 
@@ -63,7 +77,7 @@ namespace BloomJam.Enemies
             if (            ServiceLocator.Get<IInputService>().JumpPressed
                )
             {
-                Die(true);
+            //    Die(true);
             }
 
         }

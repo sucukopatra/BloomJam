@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BloomJam;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +27,7 @@ namespace YigitcanCaliskan.Bootstrap
         private void Start()
         {
            
-            SceneManager.LoadScene(1);
+          YigitcanCaliskan.ServiceLocator.ServiceLocator.Get<ISceneService>().LoadMainMenu();
         }
     }
 }
