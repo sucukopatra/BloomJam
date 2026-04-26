@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using BloomJam;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadSceneAsync(0);
+        SceneLoader.Instance.LoadMainMenu();
     }
 
     public void Quit()

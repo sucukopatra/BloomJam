@@ -1,19 +1,25 @@
+using System.Collections;
 using UnityEngine;
+using BloomJam.Player;
 
 namespace BloomJam.Enemies
 {
     public class EnemyAI : MonoBehaviour
     {
         [Header("Detection")]
-        [SerializeField] private float detectionRange  = 12f;
-        [SerializeField] private float attackRange     = 1.5f;
+        [SerializeField] private float detectionRange = 12f;
+        [SerializeField] private float attackRange    = 1.5f;
         [SerializeField] private float attackCooldown  = 1f;
+        [SerializeField] private float attackDamage    = 10f;
+        [Tooltip("Animasyon başladıktan kaç saniye sonra hasar uygulanır")]
+        [SerializeField] private float attackHitDelay  = 0.4f;
 
         [Header("Refs")]
         [SerializeField] private EnemyAnimator enemyAnimator;
 
         private IEnemyMovement _movement;
         private Transform      _player;
+        private PlayerHealth   _playerHealth;
         private float          _nextAttackTime;
 
         private enum State { Idle, Chase, Attack }
@@ -27,7 +33,9 @@ namespace BloomJam.Enemies
         private void Start()
         {
             var playerGo = GameObject.FindGameObjectWithTag("Player");
-            if (playerGo != null) _player = playerGo.transform;
+            if (playerGo == null) return;
+            _player       = playerGo.transform;
+            _playerHealth = playerGo.GetComponent<PlayerHealth>();
         }
 
         private void Update()
@@ -52,7 +60,7 @@ namespace BloomJam.Enemies
                     break;
 
                 case State.Attack:
-                    if (dist > attackRange)             EnterChase();
+                    if (dist > attackRange)                EnterChase();
                     else if (Time.time >= _nextAttackTime) DoAttack();
                     break;
             }
@@ -82,9 +90,23 @@ namespace BloomJam.Enemies
         {
             enemyAnimator.PlayAttack();
             _nextAttackTime = Time.time + attackCooldown;
-            // TODO: oyuncuya IDamageable.TakeDamage ile hasar uygula
+            StartCoroutine(ApplyDamageAfterDelay());
         }
 
-        public void OnDeath() => enabled = false;
+        private IEnumerator ApplyDamageAfterDelay()
+        {
+            yield return new WaitForSeconds(attackHitDelay);
+            // Düşman öldüyse veya player uzaklaştıysa hasar verme
+            if (!enabled) yield break;
+            if (_player == null) yield break;
+            if (Vector3.Distance(transform.position, _player.position) > attackRange * 1.5f) yield break;
+            _playerHealth?.TakeDamage(attackDamage);
+        }
+
+        public void OnDeath()
+        {
+            enabled = false;
+            StopAllCoroutines();
+        }
     }
 }
