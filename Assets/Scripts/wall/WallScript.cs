@@ -39,8 +39,8 @@ public class WallScript : MonoBehaviour
     private bool _alreadyActivated;
     private int finis_color_id;
     private int id;
-    
-    
+
+    public final_wall fwall;
     
     [Header("Audio")]
     [SerializeField] private AudioClip changed;
@@ -98,9 +98,9 @@ public class WallScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (_alreadyActivated)
         {
-          //  ApplyFrame(finish_frame);
+    
 
         }
     }

@@ -1,5 +1,7 @@
+using BloomJam.Audio;
 using UnityEngine;
 using YigitcanCaliskan.EventBus;
+using YigitcanCaliskan.ServiceLocator;
 
 namespace BloomJam.Player
 {
@@ -30,20 +32,19 @@ namespace BloomJam.Player
             CurrentHealth = maxHealth;
         }
 
+        public AudioClip clip;
         public void TakeDamage(float amount)
         {
             if (!IsAlive) return;
-            CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
+            Debug.Log("çalışıyor");
+            CurrentHealth -= amount;
+            ServiceLocator.Get<IAudioService>().PlaySFX(clip);
+           // CurrentHealth = Mathf.Max(0f, CurrentHealth - amount);
             EventBus.Publish(new PlayerDamagedEvent(CurrentHealth, maxHealth));
             if (CurrentHealth <= 0f)
                 EventBus.Publish(new PlayerDiedEvent());
         }
 
-        public void Heal(float amount)
-        {
-            if (!IsAlive) return;
-            CurrentHealth = Mathf.Min(maxHealth, CurrentHealth + amount);
-            EventBus.Publish(new PlayerDamagedEvent(CurrentHealth, maxHealth));
-        }
+       
     }
 }

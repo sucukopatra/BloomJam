@@ -3,7 +3,7 @@ using UnityEngine;
 public class FPSGroundDetector : FPSModule
 {
     [Header("Zemin Tespiti")]
-    [SerializeField] private LayerMask groundLayer = ~0;
+    [SerializeField] private LayerMask groundLayer = 0;
     [SerializeField] private float checkRadius = 0.28f;
     [SerializeField] private float groundedOffset  = -0.14f;
     

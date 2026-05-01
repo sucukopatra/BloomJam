@@ -75,6 +75,8 @@ MonoBehaviour:
   attackRange: 2.5
   attackCooldown: 1
   enemyAnimator: {fileID: 2734233441826099575}
+  player: {fileID: 0}
+  damage: 15
 --- !u!114 &3468032520310441500
 MonoBehaviour:
   m_ObjectHideFlags: 0

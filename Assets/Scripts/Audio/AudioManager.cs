@@ -60,7 +60,9 @@ namespace BloomJam.Audio
 
         private void PlayClip(AudioClip clip)
         {
-            if (clip == null || bgmSource.clip == clip) return;
+            if (clip == null) return;
+            // Zaten bu klip loop'la çalışıyorsa tekrar başlatma
+            if (bgmSource.clip == clip && bgmSource.isPlaying && bgmSource.loop) return;
             bgmSource.clip   = clip;
             bgmSource.volume = bgmVolume;
             bgmSource.loop   = true;
@@ -100,7 +102,6 @@ namespace BloomJam.Audio
         private void OnPlayerDied(PlayerDiedEvent e)
         {
             PlaySFX(playerDeathClip);
-            FadeBGM(0f, 1.5f);
         }
 
         private void OnEnemyDied(EnemyDiedEvent e) => PlaySFX(enemyDeathClip);
