@@ -56,6 +56,10 @@ MonoBehaviour:
   maxshotgundistance: 100
   enemyAnimator: {fileID: 2734233441826099575}
   enemyAI: {fileID: 5777057837987548349}
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}
+  knockbackForce: 4
+  flashDuration: 0.08
   hurt: {fileID: 0}
   dead: {fileID: 0}
   basic: {fileID: 0}
@@ -71,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4498c0d3f018a3740a90a84b639ab0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloomJam.Enemies.EnemyAI
-  detectionRange: 12
-  attackRange: 2.5
+  detectionRange: 15
+  attackRange: 3
   attackCooldown: 1
   enemyAnimator: {fileID: 2734233441826099575}
   player: {fileID: 0}

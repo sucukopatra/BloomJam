@@ -90,5 +90,15 @@ namespace BloomJam.Enemies
         }
 
         public void OnDeath() => enabled = false;
+
+        public void Stun(float duration) => StartCoroutine(StunRoutine(duration));
+
+        private System.Collections.IEnumerator StunRoutine(float duration)
+        {
+            enabled = false;
+            _movement.Stop();
+            yield return new WaitForSeconds(duration);
+            if (this != null) enabled = true;
+        }
     }
 }
