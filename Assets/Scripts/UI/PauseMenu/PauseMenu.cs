@@ -1,5 +1,7 @@
+using BloomJam;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YigitcanCaliskan.ServiceLocator;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -49,7 +51,8 @@ public class PauseMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadSceneAsync(0);
+        InputManager.Instance.SwitchToGameplay();
+        ServiceLocator.Get<ISceneService>().LoadMainMenu();
     }
 
     public void Quit()
