@@ -30,6 +30,10 @@ public class FPSController : MonoBehaviour
 
         foreach (var m in _modules)
             m.Initialize(this);
+
+        InputManager.Instance.SwitchToGameplay();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

@@ -13,6 +13,9 @@ public class MenuManager : MonoBehaviour
     {
         OpenMenu(startingMenu);
         ServiceLocator.Get<IAudioService>().PlayBGM(BGMTrack.MainMenu);
+        InputManager.Instance.SwitchToUI();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         InputManager.Instance.OnCancel += OnCancel;
     }
 

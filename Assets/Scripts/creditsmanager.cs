@@ -20,7 +20,7 @@ public class creditsmanager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SkipToMainmenu();
+        //    SkipToMainmenu();
         }
     }
   

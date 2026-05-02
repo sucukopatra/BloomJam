@@ -51,7 +51,6 @@ public class PauseMenu : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        InputManager.Instance.SwitchToGameplay();
         ServiceLocator.Get<ISceneService>().LoadMainMenu();
     }
 

@@ -30,7 +30,6 @@ public class DeathScreen : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        InputManager.Instance.SwitchToGameplay();
         ServiceLocator.Get<ISceneService>().LoadMainMenu();
     }
 }
