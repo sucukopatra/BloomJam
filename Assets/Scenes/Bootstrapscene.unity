@@ -1048,6 +1048,7 @@ MonoBehaviour:
   fadeDuration: 0.4
   gamePlayIndex: 3
   mainMenuIndex: 1
+  CreditsIndex: 4
   bootstrapIndex: 0
 --- !u!1 &1984764969
 GameObject:

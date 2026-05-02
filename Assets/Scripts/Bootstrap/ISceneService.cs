@@ -6,5 +6,6 @@ namespace BloomJam
         void ReloadCurrent();
         void LoadMainMenu();
         void LoadGameplay();
+        void LoadCredit();
     }
 }

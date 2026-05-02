@@ -14,6 +14,7 @@ namespace BloomJam
         [SerializeField] private float fadeDuration = 0.35f;
         [SerializeField] private int gamePlayIndex  = 2;
         [SerializeField] private int mainMenuIndex  = 1;
+        [SerializeField] private int CreditsIndex  = 1;
         [SerializeField] private int bootstrapIndex  = 0;
 
         private bool _isLoading;
@@ -36,6 +37,11 @@ namespace BloomJam
         {
             LoadScene(gamePlayIndex);
             
+        }
+
+        public void LoadCredit()
+        {
+            LoadScene(CreditsIndex);
         }
 
         public void LoadBootstrapMenu() => LoadScene(mainMenuIndex);

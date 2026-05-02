@@ -15,14 +15,23 @@ public class FPSGroundDetector : FPSModule
     public override void Tick()
     {
         _wasGrounded = Controller.IsGrounded;
-        
+
+        // Küreyi zemin seviyesinin biraz üstünden aşağı doğru fırlat
         spherePosition = new Vector3(
             Controller.transform.position.x,
-            Controller.transform.position.y + groundedOffset,
+            Controller.transform.position.y + groundedOffset + checkRadius,
             Controller.transform.position.z
         );
-        
-        Controller.IsGrounded = Physics.CheckSphere(spherePosition, checkRadius, groundLayer, QueryTriggerInteraction.Ignore);
+
+        RaycastHit groundHit;
+        bool hit = Physics.SphereCast(
+            spherePosition, checkRadius, Vector3.down,
+            out groundHit, Mathf.Abs(groundedOffset) + 0.05f,
+            groundLayer, QueryTriggerInteraction.Ignore
+        );
+
+        // Normal yeterince yukarı bakıyorsa zemin, bakımıyorsa duvar — duvarı say
+        Controller.IsGrounded = hit && Vector3.Angle(groundHit.normal, Vector3.up) < 50f;
         
         if (Controller.IsGrounded && !_wasGrounded)
         {
