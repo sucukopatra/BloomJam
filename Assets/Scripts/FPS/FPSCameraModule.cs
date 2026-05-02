@@ -27,8 +27,6 @@ public class FPSCameraModule : FPSModule
     private float _targetYaw;
     private float _targetPitch;
 
-    private bool _isCursorLocked = true;
-
     public override void Initialize(FPSController controller)
     {
         base.Initialize(controller);
@@ -38,9 +36,6 @@ public class FPSCameraModule : FPSModule
 
         _targetYaw   = _yaw;
         _targetPitch = _pitch;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible   = false;
     }
     // Kamera LateUpdate'te güncellenir: fizik titremesini önler
     public override void LateTick()
@@ -83,18 +78,4 @@ public class FPSCameraModule : FPSModule
             Controller.CameraRoot.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
     }
 
-    public void SetCursorLock(bool locked)
-    {
-        Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible   = !locked;
-    }
-    
-    private void Update()
-    {
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            _isCursorLocked = !_isCursorLocked;
-            SetCursorLock(_isCursorLocked);
-        }
-    }
 }

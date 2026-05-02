@@ -25,12 +25,16 @@ public class final_wall : MonoBehaviour
     private IEnumerator SlideOut()
     {
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + Vector3.forward * slideDistance;
+        Vector3 endPos   = startPos + Vector3.forward * slideDistance;
+        float prevEase   = 0f;
 
         for (float t = 0f; t < slideDuration; t += Time.deltaTime)
         {
-            float ease = Mathf.SmoothStep(0f, 1f, t / slideDuration);
+            float ease  = Mathf.SmoothStep(0f, 1f, t / slideDuration);
+            float delta = ease - prevEase;
             transform.position = Vector3.Lerp(startPos, endPos, ease);
+            transform.Rotate(0f, 0f, 360f * delta, Space.Self);
+            prevEase = ease;
             yield return null;
         }
 

@@ -100,7 +100,7 @@ namespace BloomJam.Enemies
         {
             if (Input.GetKeyDown(KeyCode.J))
             {
-                Die(true);
+               //// Die(true);    removed at build 
 
             }
         }
@@ -150,7 +150,7 @@ namespace BloomJam.Enemies
             });
 
             // Animasyonun bitmesi için biraz bekle, sonra destroy
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, 0.4f);
         }
 
         // Test için bıraktığın jump-to-die kısmını sildim,
