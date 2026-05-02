@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using BloomJam.Audio;
+using YigitcanCaliskan.ServiceLocator;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         OpenMenu(startingMenu);
+        ServiceLocator.Get<IAudioService>().PlayBGM(BGMTrack.MainMenu);
         InputManager.Instance.OnCancel += OnCancel;
     }
 

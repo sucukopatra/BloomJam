@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrapscene.unity
     guid: e9c164e36a46edb46a398ae1148df729
   - enabled: 1
+    path: Assets/Scenes/SampleScenes/MainMenuScene.unity
+    guid: 69ba03774835d6402a24a0f0db6846d5
+  - enabled: 1
+    path: Assets/Scenes/Enter_Video_Player.unity
+    guid: 56badc9868a86cc49bca33ecb6768466
+  - enabled: 1
     path: Assets/Scenes/Enemy.unity
     guid: 1c9a064221942c845a0e4357a4873bd3
   - enabled: 1
-    path: Assets/Scenes/SampleScenes/MainMenuScene.unity
-    guid: 69ba03774835d6402a24a0f0db6846d5
+    path: "Assets/Scenes/Ex\u0131t_Video_Player.unity"
+    guid: 0ca5763c096f32e4fa1462723d00d795
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

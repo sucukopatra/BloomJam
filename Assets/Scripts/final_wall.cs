@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class final_wall : MonoBehaviour
 {
-   
-  List<bool> boollll = new List<bool>();
     void Start()
     {
         
@@ -20,20 +18,7 @@ public class final_wall : MonoBehaviour
         if (hasChild==false)
         {
             Destroy(gameObject); }
-        foreach (var v in boollll)
-        {
-            if (v == false)
-            {
-                a = false;
-            }
-        }
-
-
-        if (a==true)
-        {
-            Destroy(gameObject);
-        }
-        
+    
         
         
         

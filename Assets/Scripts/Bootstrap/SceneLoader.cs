@@ -12,6 +12,7 @@ namespace BloomJam
 
         [SerializeField] private CanvasGroup fadePanel;
         [SerializeField] private float fadeDuration = 0.35f;
+        [SerializeField] private int gamePlayIndex  = 2;
         [SerializeField] private int mainMenuIndex  = 1;
         [SerializeField] private int bootstrapIndex  = 0;
 
@@ -31,6 +32,12 @@ namespace BloomJam
             LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         public void LoadMainMenu() => LoadScene(mainMenuIndex);
+        public void LoadGameplay()
+        {
+            LoadScene(gamePlayIndex);
+            
+        }
+
         public void LoadBootstrapMenu() => LoadScene(mainMenuIndex);
 
         private IEnumerator LoadRoutine(int index)

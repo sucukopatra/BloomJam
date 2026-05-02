@@ -67,11 +67,14 @@ public class InputManager : MonoBehaviour,IBootstrapService,IInputService
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         _playerInput = GetComponent<PlayerInput>();
         SetupInputActions();
-        
-     
     }
 
     private void OnEnable() => RegisterEventInputs();
